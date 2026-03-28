@@ -1,0 +1,24 @@
+Reservoir_Name,Basin_Region,Location,Proven_Reserves_Billion_Barrels,Estimated_Recoverable_Reserves_Billion_Barrels,Production_Capacity_Barrels_Day,Oil_Type_Grade,Status,Major_Operators,Year_Discovered,Notes
+Orinoco Belt (Total),Orinoco Belt,Eastern Venezuela (Anzoategui-Monagas-Guarico),235,100.00-270.00,400000,Extra Heavy Crude,Active,PDVSA-Rosneft-CNPC,2007,World's largest heavy oil deposit spanning 55000 sq km
+Carabobo-2 North,Orinoco Belt,Carabobo State,6.5,2.5,400000,Extra Heavy Crude,Development,PDVSA-Repsol-ONGC,2010,Part of Carabobo-2 project with 40 billion barrels in place
+Carabobo-4 West,Orinoco Belt,Carabobo State,6.5,2.5,400000,Extra Heavy Crude,Development,PDVSA-Repsol-ONGC,2010,Combined with Carabobo-2 North for 400000 bpd target
+Junin Block 6,Orinoco Belt,Anzoategui State,8,3.2,450000,Extra Heavy Crude,Development,Rosneft-Gazprom Neft-Lukoil,2010,Russian consortium development project
+Junin Block 4,Orinoco Belt,Anzoategui State,7,2.8,400000,Extra Heavy Crude,Development,CNPC-PDVSA,2010,Chinese-Venezuelan joint venture
+Junin Block 5,Orinoco Belt,Anzoategui State,9,3.6,500000,Extra Heavy Crude,Development,ENI-PDVSA,2010,Italian-Venezuelan partnership
+Machete,Orinoco Belt,Monagas State,1,0.4,50000,Extra Heavy Crude,Active,PDVSA,1970s,One of four original Orinoco Belt areas
+Zuata,Orinoco Belt,Anzoategui State,15,6,200000,Extra Heavy Crude,Active,PDVSA,1970s,Largest of the original Orinoco Belt areas
+Hamaca,Orinoco Belt,Monagas State,6,2.4,190000,Extra Heavy Crude,Active,PDVSA-Chevron,1990s,Upgraded to syncrude for export
+Cerro Negro,Orinoco Belt,Monagas State,15,6,120000,Extra Heavy Crude,Active,PDVSA-ExxonMobil,1980s,ExxonMobil withdrew in 2007
+Maracaibo Basin,Maracaibo Basin,Western Venezuela (Zulia-Falcon),45,18,300000,Light-Medium Crude,Mature,PDVSA,1914,Traditional production area with aging infrastructure
+Lake Maracaibo Fields,Maracaibo Basin,Lake Maracaibo,12,4.8,150000,Light Crude,Declining,PDVSA,1920s,Offshore fields with severe infrastructure issues
+Barinas-Apure Basin,Apure Basin,Western Plains,8,3.2,80000,Medium Crude,Active,PDVSA,1950s,Onshore conventional oil fields
+Falcon Basin,Falcon Basin,Northwestern Coast,5,2,60000,Medium-Heavy Crude,Active,PDVSA,1960s,Coastal region with moderate reserves
+El Furrial,Oriente Basin,Monagas State,2.5,1,120000,Medium Crude,Mature,PDVSA,1970s,Natural gas associated field
+Musipan,Oriente Basin,Monagas State,1.8,0.72,90000,Medium Crude,Mature,PDVSA,1970s,Part of Eastern Venezuela complex
+Punta Pescador,Oriente Basin,Anzoategui State,1.2,0.48,70000,Medium Crude,Active,PDVSA,1980s,Coastal field with export facilities
+Quiriquire Field,Oriente Basin,Monagas State,0.9,0.36,50000,Heavy Crude,Declining,PDVSA,1928,One of Venezuela's oldest producing fields
+Tia Juana Field,Maracaibo Basin,Zulia State,1.5,0.6,40000,Heavy Crude,Declining,PDVSA,1926,Historical field near Lake Maracaibo
+Boscán Field,Zulia Basin,Zulia State,1.8,0.72,35000,Extra Heavy Crude,Active,PDVSA,1946,Heavy oil field requiring special processing
+Dacion Field,Oriente Basin,Anzoategui State,0.6,0.24,25000,Medium Crude,Active,PDVSA,1950s,Small but steady production field
+San Tomé,Apure Basin,Apure State,0.4,0.16,15000,Light Crude,Active,PDVSA,1960s,Southern Venezuela conventional oil
+Guarico Fields,Central Plains,Guarico State,0.8,0.32,20000,Medium Crude,Active,PDVSA,1970s,Scattered small fields in central region
