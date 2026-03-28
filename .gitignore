@@ -4,3 +4,5 @@ data/archive19/flight_data_2018_2024.csv
 data/archive21/train_timeseries/
 data/archive21/test_timeseries/
 data/archive21/validation_timeseries/
+data/archive24/accident_data.csv
+data/archive24/vehicle_data.csv
