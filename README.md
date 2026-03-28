@@ -1,61 +1,50 @@
-# Quantihack
+# From Coal Mines to Wheat Fields
 
-Cross-dataset correlation analysis — finding spurious (and sometimes hilarious) correlations between completely unrelated datasets.
+**Quantihack 2026 — Team Deanos**
+
+Discovering a tradeable signal in spurious correlations.
+
+## The Signal
+
+We found that multiplying the z-scores of **global coal production** and **UK road crash casualties** produces a composite signal that predicts **UK humidity** with r = 0.99. This humidity signal then correlates with **agricultural commodity prices** at r = 0.75.
+
+$$S(t) = Z_{\text{coal}}(t) \cdot Z_{\text{casualties}}(t)$$
 
 ## Project Structure
 
 ```
 Quantihack/
-├── data/                          # All datasets
-│   ├── air_quality_france/        # French air quality measurements (2019-2020)
-│   ├── air_quality_france_2/      # French air quality (duplicate)
-│   ├── asylum_spain/              # Spanish asylum applications (2012-2021)
-│   ├── chess_games/               # Lichess chess games (2013-2017)
-│   ├── climate_soil/              # US climate & soil time series (2000-2016)
-│   ├── energy_consumption/        # Building energy consumption (2016)
-│   ├── f1_laptimes/               # F1 2026 lap times & telemetry
-│   ├── pandemic_data/             # Historical pandemic/epidemic data
-│   ├── solar_weather/             # Solar irradiance & weather (2017-2019)
-│   ├── train_delays/              # Train delay data (2016)
-│   ├── uk_accidents_2005_2010/    # UK road accidents (2005-2010)
-│   ├── uk_accidents_2021_2022/    # UK road accidents (2021-2022)
-│   ├── us_accidents_fars/         # US fatal accidents FARS (2012-2016)
-│   ├── us_flights/                # US flight data (2018-2024)
-│   └── world_coal_production/     # Global coal production (1981-2021)
-├── scripts/                       # Analysis & plotting scripts
-├── plots/                         # Generated visualisations
-├── notebooks/                     # Jupyter notebooks
-├── analysis/                      # Reports
-└── README.md
+├── report.tex                     # LaTeX research paper
+├── Quantihack.pdf                 # Compiled paper
+├── data/
+│   ├── world_coal_production/     # Global coal production (1981-2021)
+│   ├── road-casualty-data/        # UK road casualties (2005-2020)
+│   └── archive (10)/              # UK weather/humidity (2009-2024)
+├── plots/
+│   ├── wheat_signal_final.png     # Signal → Humidity → Agriculture ETF
+│   └── zscore_6yr.png             # Z-score discovery across windows
+└── scripts/
+    ├── full_zscore_v2.py          # Main correlation scanner
+    ├── zscore_hunt.py             # Z-score product/ratio search
+    ├── plot_6yr.py                # 6-year window analysis & plot
+    └── plot_wheat_final.py        # Final signal vs humidity vs DBA plot
 ```
 
-## Key Findings
+## Key Results
 
-### Best Cross-Dataset Correlations (by year)
+| Relationship | r |
+|---|---|
+| Signal → UK Humidity | 0.99 |
+| Signal → DBA Agriculture ETF | 0.75 |
+| Signal → Wheat Futures | 0.73 |
+| Signal → Corn Futures | 0.73 |
+| Signal → Coffee Futures | 0.72 |
+| Signal → Sugar Futures | 0.71 |
 
-| r | n | Dataset A | Dataset B | Columns |
-|---|---|-----------|-----------|---------|
-| -0.995 | 6 | UK Accidents | Coal Production | accident count vs coal max production |
-| -0.990 | 6 | UK Accidents | Coal Production | accident count vs coal avg production |
-| 0.959 | 6 | Asylum (Spain) | ~~Pitchfork~~ | asylum women vs avg music score |
-| -0.961 | 5 | Asylum (Spain) | Climate | peak asylum region vs avg wind speed |
-| 0.941 | 6 | Climate | UK Accidents | min temperature vs avg vehicles per crash |
-
-### Best Z-Score Triple Correlations
-
-| r | Pair (A x B) | Predicts C |
-|---|-------------|------------|
-| -0.9998 | Chess skill x Wind speed | Spanish asylum applications |
-| 0.9982 | US crash vehicle age x Atm. pressure | Chess opening depth |
-| 0.9855 | UK crash vehicles x Coal production | Average temperature |
-
-All correlations are spurious — no causal relationships exist between these datasets.
-
-## Running Analysis
+## Running
 
 ```bash
-cd Quantihack
-python scripts/full_correlation3.py    # Main cross-archive correlation
-python scripts/zscore_hunt.py          # Z-score product/ratio analysis
-python scripts/plot_zscore3.py         # Generate z-score plots
+pip install pandas numpy matplotlib yfinance pyarrow
+python scripts/full_zscore_v2.py     # Scan for z-score correlations
+python scripts/plot_wheat_final.py   # Generate the main plot
 ```
