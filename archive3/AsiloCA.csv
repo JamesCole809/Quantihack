@@ -1,0 +1,191 @@
+,CA,Solicitantes,Año,Pais
+0,Andalucía,215,2012,España
+1,Aragón,5,2012,España
+2,Asturias,9,2012,España
+3,Cantabria,19,2012,España
+4,Castilla La Mancha,11,2012,España
+5,Castilla y León,15,2012,España
+6,Cataluña,206,2012,España
+7,Ceuta,184,2012,España
+8,Comunidad de Madrid,1,2012,España
+9,Comunidad de Murcia,13,2012,España
+10,Comunidad Valenciana,185,2012,España
+11,Extremadura,2,2012,España
+12,Galicia,10,2012,España
+13,Islas Baleares,12,2012,España
+14,Islas Canarias,39,2012,España
+15,La Rioja,1,2012,España
+16,Melilla,33,2012,España
+17,Navarra,5,2012,España
+18,País Vasco,78,2012,España
+0,Andalucía,686,2013,España
+1,Aragón,96,2013,España
+2,Asturias,21,2013,España
+3,Islas Balerares,8,2013,España
+4,Islas Canarias,81,2013,España
+5,Cantabria,32,2013,España
+6,Castilla y León,41,2013,España
+7,Castilla La Mancha,105,2013,España
+8,Cataluña,484,2013,España
+9,Comunidad Valenciana,457,2013,España
+10,Extremadura,3,2013,España
+11,Galicia,8,2013,España
+12,Comunidad de Madrid,1777,2013,España
+13,Comunidad de Murcia,73,2013,España
+14,Navarra,3,2013,España
+15,País Vasco,62,2013,España
+16,Comunidad Valenciana,3,2013,España
+17,Ceuta,321,2013,España
+18,Melilla,41,2013,España
+0,Andalucía,630,2014,España
+1,Aragón,91,2014,España
+2,Asturias,36,2014,España
+3,Islas Baleares,18,2014,España
+4,Islas Canarias,115,2014,España
+5,Cantabria,47,2014,España
+6,Castilla y León,53,2014,España
+7,Castilla La Mancha,51,2014,España
+8,Cataluña,786,2014,España
+9,Ceuta,392,2014,España
+10,Comunidad Valenciana,605,2014,España
+11,Extremadura,5,2014,España
+12,Galicia,15,2014,España
+13,Comunidad de Madrid,1861,2014,España
+14,Melilla,542,2014,España
+15,Comunidad de Murcia,103,2014,España
+16,Navarra,26,2014,España
+17,País Vasco,99,2014,España
+18,Comunidad Valenciana,0,2014,España
+0,Andalucía,1416,2015,España
+1,Aragón,109,2015,España
+2,Asturias,15,2015,España
+3,Cantabria,55,2015,España
+4,Castilla La Mancha,69,2015,España
+5,Castilla y León,106,2015,España
+6,Cataluña,1302,2015,España
+7,Ceuta,314,2015,España
+8,Comunidad de Madrid,2934,2015,España
+9,Comunidad de Murcia,304,2015,España
+10,Comunidad Valenciana,1108,2015,España
+11,Extremadura,8,2015,España
+12,Galicia,45,2015,España
+13,Islas Baleares,37,2015,España
+14,Islas Canarias,202,2015,España
+15,La Rioja,11,2015,España
+16,Melilla,6336,2015,España
+17,Navarra,26,2015,España
+18,País Vasco,163,2015,España
+0,Andalucía,1784,2016,España
+1,Aragón,138,2016,España
+2,Asturias,66,2016,España
+3,Islas Baleares,127,2016,España
+4,Islas Canarias,433,2016,España
+5,Cantabria,127,2016,España
+6,Castilla y León,290,2016,España
+7,Castilla La Mancha,219,2016,España
+8,Cataluña,1834,2016,España
+9,Ceuta,221,2016,España
+10,Comunidad Valenciana,1367,2016,España
+11,Extremadura,35,2016,España
+12,Galicia,194,2016,España
+13,Comunidad de Madrid,5240,2016,España
+14,Melilla,2456,2016,España
+15,Comunidad de Murcia,565,2016,España
+16,Navarra,79,2016,España
+17,País Vasco,500,2016,España
+18,Comunidad Valenciana,22,2016,España
+0,Andalucía,3307,2017,España
+1,Aragón,349,2017,España
+2,Asturias,355,2017,España
+3,Islas Baleares,207,2017,España
+4,Islas Canarias,889,2017,España
+5,Cantabria,164,2017,España
+6,Castilla y León,766,2017,España
+7,Castilla La Mancha,357,2017,España
+8,Cataluña,3926,2017,España
+9,Comunidad Valenciana,2324,2017,España
+10,Extremadura,126,2017,España
+11,Galicia,692,2017,España
+12,Comunidad de Madrid,11233,2017,España
+13,Comunidad de Murcia,971,2017,España
+14,Navarra,175,2017,España
+15,País Vasco,970,2017,España
+16,Comunidad Valenciana,65,2017,España
+17,Ceuta,206,2017,España
+18,Melilla,2887,2017,España
+0,Andalucía,5414,2018,España
+9,Aragón,975,2018,España
+13,Asturias,531,2018,España
+14,Islas Baleares,494,2018,España
+15,Islas Canarias,2093,2018,España
+18,Cantabria,419,2018,España
+19,Castilla y León,1309,2018,España
+29,Castilla La Mancha,806,2018,España
+35,Cataluña,8047,2018,España
+40,Comunidad Valenciana,4329,2018,España
+44,Extremadura,240,2018,España
+47,Galicia,1408,2018,España
+52,Comunidad de Madrid,20731,2018,España
+53,Comunidad de Murcia,1642,2018,España
+54,Navarra,325,2018,España
+55,País Vasco,1596,2018,España
+59,Comunidad Valenciana,142,2018,España
+60,Ceuta,348,2018,España
+61,Melilla,3475,2018,España
+0,Andalucía,10426,2019,España
+1,Aragón,2654,2019,España
+2,Asturias,1269,2019,España
+3,Islas Baleares,884,2019,España
+4,Islas Canarias,3104,2019,España
+5,Cantabria,514,2019,España
+6,Castilla y León,2747,2019,España
+7,Castilla La Mancha,1614,2019,España
+8,Cataluña,13278,2019,España
+9,Comunidad Valenciana,7509,2019,España
+10,Extremadura,469,2019,España
+11,Galicia,3672,2019,España
+12,Comunidad de Madrid,55135,2019,España
+13,Comunidad de Murcia,2748,2019,España
+14,Navarra,709,2019,España
+15,País Vasco,4827,2019,España
+16,Comunidad Valenciana,344,2019,España
+17,Ceuta,579,2019,España
+18,Melilla,4267,2019,España
+0,Andalucía,9245,2020,España
+1,Aragón,2763,2020,España
+2,Asturias,1001,2020,España
+3,Islas Baleares,1617,2020,España
+4,Islas Canarias,3985,2020,España
+5,Cantabria,418,2020,España
+6,Castilla y León,2446,2020,España
+7,Castilla La Mancha,1402,2020,España
+8,Cataluña,9615,2020,España
+9,Comunidad Valenciana,9061,2020,España
+10,Extremadura,654,2020,España
+11,Galicia,3840,2020,España
+12,Comunidad de Madrid,33878,2020,España
+13,Comunidad de Murcia,2468,2020,España
+14,Navarra,972,2020,España
+15,País Vasco,3085,2020,España
+16,Comunidad Valenciana,475,2020,España
+17,Ceuta,285,2020,España
+18,Melilla,1421,2020,España
+0,Andalucía,6908,2021,España
+1,Aragón,1299,2021,España
+2,Asturias,653,2021,España
+3,Islas Baleares,464,2021,España
+4,Islas Canarias,5497,2021,España
+5,Cantabria,705,2021,España
+6,Castilla y León,1713,2021,España
+7,Castilla La Mancha,1699,2021,España
+8,Cataluña,8529,2021,España
+9,Comunidad Valenciana,4260,2021,España
+10,Extremadura,269,2021,España
+11,Galicia,2209,2021,España
+12,Comunidad de Madrid,17991,2021,España
+13,Comunidad de Murcia,2508,2021,España
+14,Navarra,594,2021,España
+15,País Vasco,1725,2021,España
+16,Comunidad Valenciana,248,2021,España
+17,Ceuta,3157,2021,España
+18,Melilla,3277,2021,España
