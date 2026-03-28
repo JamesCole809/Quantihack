@@ -1,0 +1,20 @@
+cell_type,disease_category,anomaly_label,clinical_significance,count_in_dataset
+Neutrophil,Normal_WBC,0,Primary bacterial infection fighter; most common WBC,1100
+Lymphocyte,Normal_WBC,0,Adaptive immunity; elevated in viral infections,850
+Monocyte,Normal_WBC,0,Phagocyte; precursor to macrophages,400
+Eosinophil,Normal_WBC,0,Allergic response & parasite defense,300
+Basophil,Normal_WBC,0,Least common WBC; involved in allergic reactions,150
+Normal_RBC,Normal_RBC,0,Oxygen transport; biconcave disc shape,900
+Platelet,Normal_Platelet,0,Blood clotting; anucleate cell fragment,300
+Blast_Cell,Leukemia,1,CRITICAL — immature cell; hallmark of leukemia,280
+Prolymphocyte,Leukemia,1,Immature lymphocyte; found in CLL/PLL,180
+Elliptocyte,Anemia,1,Elongated RBC; hereditary elliptocytosis / iron deficiency,200
+Schistocyte,Anemia,1,Fragmented RBC; hemolytic anemia / TTP,170
+Spherocyte,Anemia,1,Spherical RBC; hereditary spherocytosis / autoimmune hemolysis,150
+Sickle_Cell,Sickle_Cell_Anemia,1,Crescent RBC; sickle cell disease (HbS mutation),140
+Target_Cell,Anemia,1,RBC with central dense area; thalassemia / liver disease,130
+Hypersegmented_Neutrophil,Infection,1,5+ lobes; B12/folate deficiency marker,160
+Toxic_Granulation,Infection,1,Heavy dark granules; severe bacterial sepsis,140
+Reactive_Lymphocyte,Infection,1,Enlarged atypical lymph; EBV/CMV infection,150
+Smudge_Cell,Artefact,1,Ruptured lymphocyte; CLL hallmark on smear,100
+Artefact,Artefact,1,Preparation/staining artefact; should be excluded from analysis,80
