@@ -15,5 +15,3 @@ __pycache__/
 *.pyc
 data/f1_laptimes/
 data/temp36/
-# Lowercase duplicate
-quantihack.pdf
