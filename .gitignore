@@ -1,8 +1,29 @@
-data/archive (2)/online_casino_games_dataset_v2.csv
-data/archive (2)/archive (2).zip
-data/archive19/flight_data_2018_2024.csv
-data/archive21/train_timeseries/
-data/archive21/test_timeseries/
-data/archive21/validation_timeseries/
-data/archive24/accident_data.csv
-data/archive24/vehicle_data.csv
+# Large data files (>50MB)
+data/archive (3)/train.parquet
+data/climate_soil/test_timeseries/
+data/climate_soil/train_timeseries/
+data/climate_soil/validation_timeseries/
+data/f1_laptimes/All Laps Update 13032026.csv
+data/road-casualty-data/Accidents0515.parquet
+data/uk_accidents_2005_2010/accident_data.csv
+data/uk_accidents_2005_2010/vehicle_data.csv
+data/uk_accidents_2019/
+data/uk_accidents_2021_2022/Road Accident Data.csv
+data/us_flights/flight_data_2018_2024.csv
+data/uk_weather_1961_2024/
+data/uk_rainfall_2018_2023/
+data/archive (3)/
+data/archive (10)/
+data/archive (10).zip
+data/archive (4).zip
+data/archive (5)/
+data/archive (5).zip
+data/archive (6)/
+data/archive (6).zip
+data/archive (7)/
+data/archive (7).zip
+data/archive (8)/
+data/archive (8).zip
+data/archive30/
+data/road-casualty-data/Accidents0515.parquet
+data/road-casualty-data/archive (14).zip

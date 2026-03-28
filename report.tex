@@ -1,0 +1,276 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Quantihack 2026}
+\lhead{Team ...}
+\cfoot{\thepage}
+
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{From Coal Mines to Wheat Fields:} \\ \large Discovering a Tradeable Signal in Spurious Correlations}
+\author{Team:... \\ Quantihack 2026}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We investigate cross-dataset correlations between seemingly unrelated public datasets as part of the Quantihack challenge. Beginning with a systematic search across 15+ datasets spanning coal production, UK road accidents, weather, asylum applications, and commodity prices, we identify a chain of spurious correlations that, when combined via z-score multiplication, produce a composite signal with remarkable predictive power for UK humidity levels ($r = 0.99$). We then demonstrate that this humidity signal propagates into agricultural commodity markets, correlating with CBOT wheat futures at $r = 0.73$ over a six-year window (2009--2014). We construct a simple annual trading strategy and backtest it against historical wheat prices.
+\end{abstract}
+
+% ============================================================
+\section{Introduction}
+% ============================================================
+
+The theme of this hackathon is finding correlations between weird, unrelated datasets. Spurious correlations---statistical relationships between variables with no causal connection---are a well-known phenomenon in data science. Famous examples include the correlation between Nicolas Cage films and swimming pool drownings, or between margarine consumption and the divorce rate in Maine.
+
+Rather than simply cataloguing these oddities, we asked: \textbf{can a spurious correlation be operationalised into a tradeable financial signal?} Specifically, we sought a chain of correlations that terminates in an asset price, constructing a pipeline from absurd inputs to actionable outputs.
+
+Our approach:
+\begin{enumerate}[nosep]
+    \item Systematically scan all pairwise and z-score product correlations across 15+ public datasets.
+    \item Identify a z-score composite signal with near-perfect correlation to a physical variable (humidity).
+    \item Link that physical variable to an agricultural commodity whose price is humidity-sensitive.
+    \item Backtest a simple trading rule based on the signal.
+\end{enumerate}
+
+% ============================================================
+\section{Data Sources}
+% ============================================================
+
+We collected and aggregated the following datasets, all publicly available:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}llc@{}}
+\toprule
+\textbf{Dataset} & \textbf{Description} & \textbf{Years} \\
+\midrule
+World Coal Production & Annual production by country (Million Tonnes) & 1981--2021 \\
+UK Road Casualties & DfT accident-level data (casualties, vehicles) & 2005--2020 \\
+UK Weather (Regional) & Daily temp, wind, precipitation, dewpoint & 1961--2024 \\
+Weather Archive & Daily humidity, rain, wind, temperature & 2009--2024 \\
+UK Rainfall & Monthly avg rainfall and temperature & 2018--2023 \\
+Spanish Asylum Data & Annual applications by region and nationality & 2012--2021 \\
+Wheat Futures (ZW=F) & CBOT wheat futures daily close prices & 2009--2014 \\
+\bottomrule
+\end{tabular}
+\caption{Summary of datasets used in this analysis.}
+\end{table}
+
+% ============================================================
+\section{Methodology}
+% ============================================================
+
+\subsection{Phase 1: Pairwise Correlation Scan}
+
+We aggregated each dataset to annual frequency and computed Pearson correlation coefficients for all cross-dataset column pairs with at least 5 overlapping years. This produced over 500 pairwise correlations, ranked by $|r|$.
+
+Top results included UK accident counts vs.\ coal production ($r = -0.995$, $n = 6$) and asylum applications vs.\ weather humidity ($r = -0.69$, $n = 10$). While interesting, these are simple two-variable relationships.
+
+\subsection{Phase 2: Z-Score Product Signal}
+
+To discover higher-order relationships, we introduced a \textbf{z-score product} methodology. For two variables $X$ and $Y$, we define the composite signal:
+
+\begin{equation}
+S(t) = Z_X(t) \cdot Z_Y(t)
+\end{equation}
+
+where the z-score of a variable $X$ at time $t$ is:
+
+\begin{equation}
+Z_X(t) = \frac{X(t) - \bar{X}}{\sigma_X}
+\end{equation}
+
+with $\bar{X}$ and $\sigma_X$ computed over the analysis window. The product $S(t)$ captures years where both variables are jointly extreme---either both above or both below their means.
+
+We computed $S(t)$ for all cross-dataset variable pairs and correlated each product with every variable from a \textit{third} dataset, requiring a minimum of 5 overlapping years and $|r| > 0.85$.
+
+\subsection{Phase 3: Signal Discovery}
+
+Scanning across sliding 6-year windows, the strongest z-score product correlation found was:
+
+\begin{equation}
+S(t) = Z_{\text{coal\_max}}(t) \cdot Z_{\text{uk\_crash\_casualties}}(t)
+\end{equation}
+
+where:
+\begin{itemize}[nosep]
+    \item $\text{coal\_max}(t)$: Maximum coal production by any single country in year $t$ (Million Tonnes)
+    \item $\text{uk\_crash\_casualties}(t)$: Average number of casualties per UK road accident in year $t$
+\end{itemize}
+
+This signal correlates with \textbf{average UK humidity} at $r = 0.99$ over the window 2009--2014 ($n = 6$).
+
+% PLACEHOLDER: Insert z-score signal vs humidity plot
+% \begin{figure}[H]
+% \centering
+% \includegraphics[width=0.9\textwidth]{plots/wheat_signal.png}
+% \caption{Normalised z-score signal, UK humidity, and wheat futures (2009--2014).}
+% \label{fig:signal}
+% \end{figure}
+
+\subsection{Phase 4: Linking to Commodity Markets}
+
+Humidity directly affects UK agricultural output. High humidity promotes fungal diseases (septoria, fusarium) in wheat crops and complicates harvest timing. The UK is the world's 12th largest wheat producer, and wheat is the UK's largest crop by cultivated area.
+
+We correlated our signal $S(t)$ against CBOT wheat futures (ZW=F) annual average close prices:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\textbf{Relationship} & \textbf{$r$} & \textbf{$n$} \\
+\midrule
+$S(t) \to$ Humidity & $0.99$ & 6 \\
+$S(t) \to$ Wheat Futures & $0.73$ & 6 \\
+Humidity $\to$ Wheat Futures & $0.67$ & 6 \\
+\bottomrule
+\end{tabular}
+\caption{Correlation chain from z-score signal to wheat futures.}
+\end{table}
+
+The signal also showed significant correlation with other humidity-sensitive commodity futures:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}llc@{}}
+\toprule
+\textbf{Ticker} & \textbf{Commodity} & \textbf{$r$ with $S(t)$} \\
+\midrule
+ZW=F & Wheat Futures & 0.73 \\
+ZC=F & Corn Futures & 0.73 \\
+KC=F & Coffee Futures & 0.72 \\
+SB=F & Sugar Futures & 0.71 \\
+OJ=F & Orange Juice Futures & 0.70 \\
+DBA & Agriculture ETF (broad) & 0.75 \\
+\bottomrule
+\end{tabular}
+\caption{Signal correlation with humidity-sensitive agricultural commodities.}
+\end{table}
+
+% ============================================================
+\section{Backtest}
+% ============================================================
+
+We construct a simple annual trading strategy using $S(t)$ as the entry signal.
+
+\subsection{Strategy Rules}
+
+\begin{enumerate}[nosep]
+    \item At the start of each year, compute $S(t)$ from the previous year's coal production and UK crash casualty data.
+    \item If $S(t) > S(t-1)$ (signal rising): \textbf{go long} wheat futures.
+    \item If $S(t) < S(t-1)$ (signal falling): \textbf{go short} wheat futures.
+    \item Hold the position for the entire calendar year.
+\end{enumerate}
+
+\subsection{Results}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}cccccc@{}}
+\toprule
+\textbf{Year} & \textbf{$S(t)$} & \textbf{Signal} & \textbf{Wheat Avg} & \textbf{Wheat $\Delta$\%} & \textbf{P\&L} \\
+\midrule
+2009 & $-1.60$ & -- & \$529 & -- & -- \\
+2010 & $-0.44$ & LONG & \$582 & $+10.0\%$ & $+10.0\%$ \\
+2011 & $+0.05$ & LONG & \$709 & $+21.7\%$ & $+21.7\%$ \\
+2012 & $+0.42$ & LONG & \$750 & $+5.9\%$ & $+5.9\%$ \\
+2013 & $-1.24$ & SHORT & \$684 & $-8.9\%$ & $+8.9\%$ \\
+2014 & $-0.78$ & LONG & \$588 & $-14.1\%$ & $-14.1\%$ \\
+\midrule
+\multicolumn{5}{r}{\textbf{Total cumulative return:}} & $\mathbf{+32.4\%}$ \\
+\multicolumn{5}{r}{\textbf{Win rate:}} & $\mathbf{4/5 = 80\%}$ \\
+\bottomrule
+\end{tabular}
+\caption{Backtest results for the annual wheat signal strategy (2010--2014).}
+\end{table}
+
+The strategy achieves a cumulative return of 32.4\% over 5 years with a win rate of 80\%. The single losing trade (2014) occurs when the signal rises but wheat prices fall---a year when global wheat supply increased despite UK humidity conditions.
+
+\textbf{Note:} This backtest is in-sample (the same window used to discover the correlation). Out-of-sample performance is expected to be significantly worse, as the underlying correlations are spurious.
+
+% ============================================================
+\section{Robustness Checks}
+% ============================================================
+
+We tested the signal at higher temporal frequencies:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\textbf{Frequency} & \textbf{$S \to$ Humidity} & \textbf{$S \to$ Wheat} & \textbf{Data points} \\
+\midrule
+Annual & 0.99 & 0.73 & 6 \\
+Bi-annual & 0.73 & 0.46 & 12 \\
+Quarterly & 0.37 & 0.42 & 24 \\
+\bottomrule
+\end{tabular}
+\caption{Signal stability across temporal frequencies.}
+\end{table}
+
+Correlations weaken at higher frequencies due to seasonal noise in humidity and crash data. The annual frequency averages out these seasonal effects, revealing the underlying (spurious) trend.
+
+% ============================================================
+\section{Discussion}
+% ============================================================
+
+\subsection{Why Does This Work?}
+
+It doesn't---not causally. The correlation chain relies on three independent trends that happened to move together during 2009--2014:
+
+\begin{itemize}[nosep]
+    \item \textbf{Coal production} peaked globally around 2012--2013, driven by Chinese demand.
+    \item \textbf{UK crash casualties} were declining steadily due to improved vehicle safety and road engineering.
+    \item \textbf{Wheat prices} spiked in 2012 due to droughts in the US and Russia, then declined.
+\end{itemize}
+
+The z-score product captures the interaction of the first two trends, which happens to align with the third. Humidity provides a plausible-sounding but entirely coincidental bridge.
+
+\subsection{Lessons}
+
+\begin{enumerate}[nosep]
+    \item \textbf{Spurious correlations are everywhere.} With enough datasets and flexible windowing, near-perfect correlations can always be found.
+    \item \textbf{Z-score products amplify spurious signals.} Multiplying z-scores creates a combinatorial explosion of testable hypotheses, guaranteeing false positives.
+    \item \textbf{Narrative is dangerous.} The humidity $\to$ wheat story sounds plausible, which makes the spurious correlation more convincing---and more dangerous.
+    \item \textbf{In-sample backtests are meaningless} without out-of-sample validation. Our 80\% win rate is an artefact of data mining.
+\end{enumerate}
+
+% ============================================================
+\section{Conclusion}
+% ============================================================
+
+We demonstrate that it is possible to construct a seemingly sophisticated quantitative trading signal from entirely spurious correlations. By combining the z-scores of global coal production and UK road casualty data, we produce a composite signal that predicts UK humidity ($r = 0.99$) and correlates with wheat futures ($r = 0.73$). A naive backtest yields a 32.4\% cumulative return over 5 years.
+
+This result is, of course, entirely meaningless from a predictive standpoint. It serves as a cautionary tale about the dangers of data mining, flexible hypothesis testing, and the seductive power of narrative in quantitative finance.
+
+\vspace{1em}
+\noindent\textit{``With four parameters I can fit an elephant, and with five I can make him wiggle his trunk.''} --- John von Neumann
+
+% ============================================================
+\section*{Appendix: Code and Data}
+% ============================================================
+
+All code and datasets are available at: \url{https://github.com/JamesCole809/Quantihack}
+
+\begin{itemize}[nosep]
+    \item \texttt{scripts/full\_zscore\_v2.py} --- Main correlation scanner
+    \item \texttt{scripts/plot\_wheat\_signal.py} --- Signal vs.\ humidity vs.\ wheat plot
+    \item \texttt{scripts/plot\_6yr.py} --- 6-year window z-score analysis
+    \item \texttt{scripts/zscore\_hunt.py} --- Z-score product/ratio/squared search
+\end{itemize}
+
+\end{document}
